@@ -7,18 +7,18 @@
     let prev = document.querySelector('.prev');
     let next = document.querySelector('.next');
 
-    // lets create an Date object
+    //  create an Date object
 
     let dt = new Date();
     let month = dt.getMonth()+1 //as it will return value between 0-11 so to make it 1-12 we add 1 to it
     let year = dt.getFullYear();
     let currentDay = dt.getDate();
 
-    // make an array of month name to map with the month value we obtained using getMonth()
+    // made an array of month name to map with the month value we obtained using getMonth()
     let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'july', 'August', 'September', 'October', 'November', 'December']
 
 
-    // now lets handle the previous and next button click
+    //  handle the previous and next button click
     prev.addEventListener('click',event=>{
         if(month===1){
             month =12;
@@ -38,7 +38,7 @@
         }
         calendar();
     })
-    // now lets make a calendar function
+    // made a calendar function
 
     const calendar = ()=>{
         monthName.innerHTML = monthNames[month-1];
