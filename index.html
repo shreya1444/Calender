@@ -1,46 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+   <head>
+    <title>Calender</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Calendar</title>
+    <link rel="stylesheet" href="calender.css">
+ 
+   </head> 
+   <body onload="RenderDate()">
+    <div class="wrapper">
+        <div class="calender">
+            <div class="month">
+            <div class="prev" onclick="moveDate('prev')">
+                <span>&#10094</span>
+            </div>
+            <div>
+                <h2 id="month"></h2>
+                <p id="date_str"></p>
+            </div>
+            <div class="next" onclick="moveDate('next')">
+                <span>&#10095</span>
 
-   <link rel="stylesheet" href="style.css"/>
-</head>
+            </div>
+            </div>
+            <div class="weekends">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+        </div>
+            <div class="days">
+               
+            </div>
+        </div>
 
-<body onload="calendar()">
-    <!--  Lets make a simple Calendar using HTML, CSS and Javascript -->
-
-    <div class="month">
-        <ul>
-            <!-- add previous and next buttons -->
-            <li class="prev">&#10094;</li>
-            <li class="next">&#10095;</li>
-            <li class="month-title">
-                <span class="month-name"></span>
-                <br>
-                <span class="year"></span>
-            </li>
-        </ul>
     </div>
-    <ul class="weekdays">
-        <li>Mo</li>
-        <li>Tu</li>
-        <li>We</li>
-        <li>Th</li>
-        <li>Fr</li>
-        <li>Sa</li>
-        <li>Su</li>
-    </ul>
+   <script src="calender.js"></script>
 
-    
-
-    <ul class="days">
-    
-    </ul>
-
-</body>
-<script src="index.js"></script>
+   </body>
 </html>
