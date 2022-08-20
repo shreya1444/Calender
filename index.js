@@ -1,79 +1,65 @@
-
-   
-    let dayList = document.querySelector('.days');
-    let monthName = document.querySelector('.month-name');
-    let yearName = document.querySelector('.year');
-    let prev = document.querySelector('.prev');
-    let next = document.querySelector('.next');
-
-  
-
-    let dt = new Date();
-    let month = dt.getMonth()+1
-    let year = dt.getFullYear();
-    let currentDay = dt.getDate();
-
-   
-    let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'july', 'August', 'September', 'October', 'November', 'December']
+var dt=new Date();
+function RenderDate(){
 
 
+
+var day =dt.getDay();
+console.log(dt.getDay());
+var endDate=new Date(
+    dt.getFullYear(),
+    dt.getMonth() + 1,
+    0
+).getDate();
+var prevDate=new Date(
+    dt.getFullYear(),
+    dt.getMonth() ,
+    0
+).getDate();
+
+
+var today=new Date()
+console.log(today)
+console.log(endDate);
+var months=["January",
+"February",
+"March",
+"April",
+"May",
+"June",
+"July",
+"August",
+"September",
+"October",
+"November",
+"December"];
+console.log(months[dt.getMonth()])//month
+document.getElementById("date_str").innerHTML=dt.toDateString()//return date
+document.getElementById("month").innerHTML=months[dt.getMonth()]
+
+var cells=""
+for (x=day;x>0;x--){
+    cells+="<div class='prev_date'>"+(prevDate-x+1)+"</div>"
+}
+for(i=1;i<=endDate;i++)
+{
+    if(i==today.getDate()&&dt.getMonth()==today.getMonth()){
+        cells+="<div class='today'>"+i+"</div>";
+    }else{
+    cells+="<div>"+i+"</div>"
+}
+}
+document.getElementsByClassName("days")[0].innerHTML=cells;
+}
+function moveDate(para){
+    if(para=='prev'){
+        dt.setMonth(dt.getMonth()-1);
     
-    prev.addEventListener('click',event=>{
-        if(month===1){
-            month =12;
-            month-=1;
-        }else{
-            month-=1;
-        }
-        calendar();
-    })
 
-    next.addEventListener('click',event=>{
-        if(month===12){
-            month =1;
-            month+=1;
-        }else{
-            month+=1;
-        }
-        calendar();
-    })
-   
-
-    const calendar = ()=>{
-        monthName.innerHTML = monthNames[month-1];
-        yearName.innerHTML = year;
-        dayList.innerHTML = ''
-        
-        daysInMonth = new Date(year, month, 0).getDate(); 
-
-        dayNumber = new Date(year,month-1,1).getDay();
-        let gaps
-        if (dayNumber === 0) {
-            gaps = 6
-        }else{
-            gaps = dayNumber - 1;
-           
-        }
-
-        for(day = -gaps + 1 ;day<=daysInMonth; day++){
-            const days = document.createElement('li');
-            if(day<=0){
-                days.innerHTML = "";
-                dayList.appendChild(days);
-            } else if (day===currentDay&&month===dt.getMonth()+1 && year===dt.getFullYear()){
-                
-                days.setAttribute('class','active');
-                days.innerHTML = day;
-                dayList.appendChild(days)
-            }
-            else{
-                days.innerHTML = day;
-                dayList.appendChild(days);
-            }
-        }
+    }else if(para=='next'){
+        dt.setMonth(dt.getMonth()+1)
+     
     }
+    RenderDate();
+}
 
-   
 
-        
-    
